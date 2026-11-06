@@ -1,16 +1,18 @@
 {
   "name": "dsh-tabby-serial",
-  "version": "1.0.0",
-  "description": "DeepSeek Harness bundle that connects the Tabby serial MCP bridge, so the agent can list, open, read and write your Tabby serial tabs",
+  "version": "1.0.1",
+  "description": "DeepSeek Harness bundle for the Tabby serial MCP bridge: connects the MCP server and registers the tabby-serial skill, so the agent knows how to reach your serial tabs",
   "keywords": [
     "dsh",
     "dsh-bundle",
     "mcp",
     "serial",
     "tabby",
+    "skill",
     "deepseek-harness"
   ],
   "type": "module",
+  "main": "./index.js",
   "author": "Wazy-XD",
   "license": "MIT",
   "repository": {
@@ -28,10 +30,12 @@
     }
   },
   "exports": {
+    ".": "./index.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
   "files": [
+    "index.js",
     "cordis.patch.yml",
     "locale/*.json",
     "icon.svg"

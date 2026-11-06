@@ -1,4 +1,6 @@
 - insert:
+    - id: tabby-serial-skill
+      name: 'dsh-tabby-serial'
     - id: tabby-serial-mcp
       name: '@deepseek-ai/dsh-mcp-client'
       config:
