@@ -77,7 +77,6 @@ Installing straight from this repository works too (`github:Wazy-XD/tabby-serial
 either way the profile lockfile pins an exact version/commit. To upgrade later, `remove_bundle
 dsh-tabby-serial` and install again. A release tarball (`dsh-tabby-serial.zip`) works as well; or add the
 row by hand:
-
 ```yaml
 - insert:
     - id: tabby-serial-mcp
@@ -96,6 +95,16 @@ row by hand:
 ```
 
 Tools then appear as `mcp__tabby__serial_*`.
+
+### The `tabby-serial` skill
+
+The bundle also registers a skill named `tabby-serial` (it shows up in the agent's skill catalog). It is a
+short playbook — which tool is the entry point, how the write/expect loop works, and the rules for sharing
+one port with a human — loaded only when a task is about serial, so it costs nothing elsewhere. The bundle
+also teaches the same workflow through the MCP server's `instructions`.
+
+The bundle's own page in **Plugins** renders `README.zh.md` for Chinese and `README.md` for English, chosen
+through `meta.detail` in `locale/<language>.json`.
 
 ## Tools
 

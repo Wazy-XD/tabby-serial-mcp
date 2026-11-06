@@ -94,6 +94,15 @@ plugin_manager install_bundle dsh-tabby-serial
 
 工具名形如 `mcp__tabby__serial_*`。
 
+### `tabby-serial` 技能
+
+bundle 同时会注册一个叫 `tabby-serial` 的技能（出现在 agent 的技能目录里）：入口用哪个工具、读写循环怎么写、
+和人共用同一个端口要守什么规矩。只在任务真的涉及串口时才加载，平时不占上下文。MCP 服务自身的
+`instructions` 也会把同一套流程传给 agent。
+
+bundle 在 **插件** 页里的详情文档，中文读 `README.zh.md`、英文读 `README.md`，由
+`locale/<语言>.json` 的 `meta.detail` 指定。
+
 ## 工具
 
 | 工具 | 作用 |
