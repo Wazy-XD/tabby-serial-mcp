@@ -1,6 +1,7 @@
 {
   "meta": {
     "title": "Tabby serial MCP",
-    "description": "Connects the Tabby serial bridge on 127.0.0.1:3002 and registers the tabby-serial skill, so the agent can list, open, read and write your Tabby serial tabs."
+    "description": "Connects the Tabby serial bridge on 127.0.0.1:3002 and registers the tabby-serial skill, so the agent can list, open, read and write your Tabby serial tabs.",
+    "detail": "README.md"
   }
 }
