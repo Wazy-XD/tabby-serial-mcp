@@ -7,3 +7,4 @@ serial-mcp.json
 dist/
 *.zip
 *.tar.gz
+build/
