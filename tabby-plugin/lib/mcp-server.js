@@ -195,6 +195,10 @@ function createMcpServer (options = {}) {
     }
 
     function health () {
+        let extra = {}
+        try {
+            extra = options.describe ? options.describe() : {}
+        } catch { /* extra fields are best effort */ }
         return {
             running: !!state.server,
             url: state.host ? `http://${state.host}:${state.port}/mcp` : null,
@@ -205,6 +209,7 @@ function createMcpServer (options = {}) {
             errors: state.errors,
             lastError: state.lastError,
             tools: tools.map(tool => tool.name),
+            ...extra,
         }
     }
 

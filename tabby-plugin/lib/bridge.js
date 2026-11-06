@@ -7,6 +7,11 @@ const { Registry } = require('./sessions')
 const { createMcpServer } = require('./mcp-server')
 const { createTools } = require('./tools')
 
+let VERSION = '1.0.0'
+try {
+    VERSION = require('../package.json').version || VERSION
+} catch { /* keep the fallback */ }
+
 const INSTRUCTIONS = `The user is running Tabby (a terminal app) and has serial connections open in it, or wants new ones.
 All tools operate on a *serial tab*: a live serial connection that the user can also see and type into.
 
@@ -69,8 +74,14 @@ class Bridge {
         this.server = createMcpServer({
             tools: createTools(this),
             instructions: INSTRUCTIONS,
-            version: '1.0.0',
+            version: VERSION,
             log: this.log,
+            describe: () => ({
+                version: VERSION,
+                locale: this.locale(),
+                lang: this.lang(),
+                settingsComponent: this.settingsCheck,
+            }),
         })
         this.state = 'idle'
         this.lastStartError = null
