@@ -1,0 +1,28 @@
+{
+  "name": "tabby-serial-mcp",
+  "version": "1.0.0",
+  "description": "MCP bridge for Tabby: lets an agent read and write raw bytes on your open serial tabs and open new ones",
+  "keywords": [
+    "tabby-plugin",
+    "serial",
+    "mcp",
+    "uart",
+    "agent"
+  ],
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib",
+    "README.md"
+  ],
+  "author": "Wazy-XD",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wazy-XD/tabby-serial-mcp.git",
+    "directory": "tabby-plugin"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

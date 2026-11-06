@@ -1,0 +1,14 @@
+- insert:
+    - id: tabby-serial-mcp
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: tabby
+        transport: streamable-http
+        url: http://127.0.0.1:3002/mcp
+        toolCallTimeoutMs: 60000
+        failOnStartupError: false
+        reconnect:
+          enabled: true
+          initialDelayMs: 1000
+          maxDelayMs: 30000
+          maxAttempts: 200

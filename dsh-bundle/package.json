@@ -1,0 +1,21 @@
+{
+  "name": "dsh-tabby-serial",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Connects the Tabby serial MCP bridge so the agent can use your open serial tabs",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "exports": {
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ]
+}

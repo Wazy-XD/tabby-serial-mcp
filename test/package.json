@@ -1,0 +1,9 @@
+{
+  "name": "tabby-serial-mcp-tests",
+  "private": true,
+  "type": "module",
+  "description": "Protocol regression test: drives the plugin's MCP server with the real MCP SDK",
+  "devDependencies": {
+    "@modelcontextprotocol/client": "^2.2.0"
+  }
+}

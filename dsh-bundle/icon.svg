@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tabby serial MCP">
+  <rect width="64" height="64" rx="14" fill="#18212b"/>
+  <rect x="11" y="24" width="42" height="16" rx="4" fill="#233040" stroke="#54d3c2" stroke-width="2.5"/>
+  <circle cx="20" cy="32" r="3.2" fill="#54d3c2"/>
+  <circle cx="32" cy="32" r="3.2" fill="#54d3c2"/>
+  <circle cx="44" cy="32" r="3.2" fill="#54d3c2"/>
+  <path d="M20 40v9M32 40v9M44 40v9" stroke="#54d3c2" stroke-width="2.6" stroke-linecap="round"/>
+</svg>

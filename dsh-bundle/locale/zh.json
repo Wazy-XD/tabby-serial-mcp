@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Tabby 串口 MCP",
+    "description": "连接 127.0.0.1:3002 上的 Tabby 串口桥接服务，让 agent 能列出、新建、读取和写入你 Tabby 里的串口标签页。"
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+test/node_modules/
+*.log
+.DS_Store
+Thumbs.db
+serial-mcp.json
+dist/
+*.zip
+*.tar.gz
