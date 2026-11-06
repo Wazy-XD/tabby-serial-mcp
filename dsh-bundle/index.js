@@ -60,6 +60,7 @@ export function apply (ctx) {
         name: 'tabby-serial',
         description: 'Drive a serial port through Tabby: list/open serial tabs, write raw bytes or hex, read with a cursor, and wait for a device reply with a regex.',
         whenToUse: 'A task mentions a serial port, COM port, UART, AT commands or a device console, and Tabby is available or the user wants a serial window opened.',
+        source: 'runtime',
         content: SKILL,
         invocation: { modelInvocable: true, userInvocable: true },
     }))

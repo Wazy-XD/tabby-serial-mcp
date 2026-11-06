@@ -1,6 +1,6 @@
 {
   "name": "dsh-tabby-serial",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "DeepSeek Harness bundle for the Tabby serial MCP bridge: connects the MCP server and registers the tabby-serial skill, so the agent knows how to reach your serial tabs",
   "keywords": [
     "dsh",
