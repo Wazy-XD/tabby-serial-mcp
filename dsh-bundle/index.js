@@ -1,4 +1,4 @@
-const SKILL = String.raw`# Tabby serial console
+const SKILL = `# Tabby serial console
 
 Use this when the task involves a serial port — COM12, /dev/ttyUSB0, a UART header, AT commands, a
 board's debug console — and the user runs Tabby, or wants a serial window opened there.
@@ -15,15 +15,15 @@ with another tool, and never ask the user to close their window.
 
 ## The loop
 
-- Send: \`serial_write { target, data: "AT+CSQ\r\n" }\`, or \`{ hex: "41 54 0D 0A" }\` for binary.
-- Ask and wait in one call: \`serial_expect { target, pattern: "OK|ERROR", timeoutMs: 3000, write: "AT\r\n" }\`.
+- Send: \`serial_write { target, data: "AT+CSQ\\r\\n" }\`, or \`{ hex: "41 54 0D 0A" }\` for binary.
+- Ask and wait in one call: \`serial_expect { target, pattern: "OK|ERROR", timeoutMs: 3000, write: "AT\\r\\n" }\`.
   The matcher is armed *before* the bytes go out, so a fast reply cannot be missed.
 - Stream: \`serial_read { target, timeoutMs: 1000, as: "hex" }\`. \`timeoutMs\` long-polls instead of
   returning empty.
 
 ## Rules that matter
 
-- **Raw bytes.** Nothing is appended unless \`newline\` (\`lf\`/\`cr\`/\`crlf\`) or an explicit \`\r\n\` says so.
+- **Raw bytes.** Nothing is appended unless \`newline\` (\`lf\`/\`cr\`/\`crlf\`) or an explicit \`\\r\\n\` says so.
   Most devices want CRLF; a bare LF silently does nothing on many AT parsers.
 - **Reads are cursor-based.** \`serial_read\` reports absolute \`from\`/\`to\` offsets. \`bufferStart\` is the
   earliest byte still buffered — anything received before the plugin attached is gone, so reset the
@@ -38,7 +38,7 @@ with another tool, and never ask the user to close their window.
 
 ## Device habits worth checking
 
-- Text protocols: wait for the prompt (\`OK\`, \`>\`, \`#\`, \`\$ \`) before the next command instead of
+- Text protocols: wait for the prompt (\`OK\`, \`>\`, \`#\`, \`$ \`) before the next command instead of
   sleeping a fixed time.
 - Binary protocols: work in hex (\`as: "hex"\`, \`hex\` writes) and compare bytes, not decoded text.
 - No-echo devices: do not wait for your own command to come back; wait for the response only.
