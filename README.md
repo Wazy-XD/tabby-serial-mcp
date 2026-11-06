@@ -58,20 +58,25 @@ extract it into your Tabby plugin directory so that the folder is named `tabby-s
 Then restart Tabby. `http://127.0.0.1:3002/health` should answer `running: true`, and Tabby's settings
 grow a **Serial MCP** page (status, port, echo toggle, restart).
 
+The plugin is also on npm as [`tabby-serial-mcp`](https://www.npmjs.com/package/tabby-serial-mcp), so
+Tabby can install it itself: **Settings → Plugins → search `serial mcp` → Install**, then restart.
+
 ### 2. MCP client
 
 Point any streamable-HTTP MCP client at `http://127.0.0.1:3002/mcp`.
 
 For DeepSeek Harness, `dsh-bundle/` is a configuration-only bundle that wires the official
-`@deepseek-ai/dsh-mcp-client` to that URL. Install it straight from this repository:
+`@deepseek-ai/dsh-mcp-client` to that URL. It is published as
+[`dsh-tabby-serial`](https://www.npmjs.com/package/dsh-tabby-serial):
 
 ```
-plugin_manager install_bundle github:Wazy-XD/tabby-serial-mcp#path:/dsh-bundle
+plugin_manager install_bundle dsh-tabby-serial
 ```
 
-That resolves through git and pins the commit in the profile lockfile — no local path, no symlink. To move
-to a newer commit later, `remove_bundle dsh-tabby-serial` and install again. A release tarball
-(`dsh-tabby-serial.zip`) works too; or add the row by hand:
+Installing straight from this repository works too (`github:Wazy-XD/tabby-serial-mcp#path:/dsh-bundle`);
+either way the profile lockfile pins an exact version/commit. To upgrade later, `remove_bundle
+dsh-tabby-serial` and install again. A release tarball (`dsh-tabby-serial.zip`) works as well; or add the
+row by hand:
 
 ```yaml
 - insert:

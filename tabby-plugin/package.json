@@ -22,7 +22,14 @@
     "url": "https://github.com/Wazy-XD/tabby-serial-mcp.git",
     "directory": "tabby-plugin"
   },
+  "homepage": "https://github.com/Wazy-XD/tabby-serial-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/Wazy-XD/tabby-serial-mcp/issues"
+  },
   "engines": {
     "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

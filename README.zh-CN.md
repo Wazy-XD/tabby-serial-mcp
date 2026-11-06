@@ -57,19 +57,23 @@ curl -fsSL https://raw.githubusercontent.com/Wazy-XD/tabby-serial-mcp/main/scrip
 重启 Tabby。`http://127.0.0.1:3002/health` 应返回 `running: true`，Tabby 设置里会多出一页
 **串口 MCP**（状态、端口、回显开关、重启服务）。
 
+插件也发布在 npm 上（[`tabby-serial-mcp`](https://www.npmjs.com/package/tabby-serial-mcp)），所以也可以
+让 Tabby 自己装：**设置 → 插件 → 搜索 `serial mcp` → 安装**，然后重启。
+
 ### 2. MCP 客户端
 
 任何 streamable-HTTP 的 MCP 客户端都可以连 `http://127.0.0.1:3002/mcp`。
 
 用 DeepSeek Harness 的话，`dsh-bundle/` 是一个配置型 bundle，把官方 `@deepseek-ai/dsh-mcp-client`
-接到这个地址。直接从仓库装：
+接到这个地址。它发布在 npm 上（[`dsh-tabby-serial`](https://www.npmjs.com/package/dsh-tabby-serial)）：
 
 ```
-plugin_manager install_bundle github:Wazy-XD/tabby-serial-mcp#path:/dsh-bundle
+plugin_manager install_bundle dsh-tabby-serial
 ```
 
-走 git 解析，会把具体 commit 钉进 profile 的锁文件——不是本地路径，也不是软链。以后要升级到新 commit，
-先 `remove_bundle dsh-tabby-serial` 再装一次。也可以用 release 里的 `dsh-tabby-serial.zip`，或者手写：
+也可以直接从本仓库装（`github:Wazy-XD/tabby-serial-mcp#path:/dsh-bundle`）；两种方式都会把版本/commit
+钉进 profile 的锁文件。以后升级先 `remove_bundle dsh-tabby-serial` 再装一次。release 里的
+`dsh-tabby-serial.zip` 同样可用，或者手写：
 
 ```yaml
 - insert:
