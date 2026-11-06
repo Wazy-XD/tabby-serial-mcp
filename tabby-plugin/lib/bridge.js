@@ -290,6 +290,10 @@ class Bridge {
 
     boot () {
         this.log(`boot: userData=${this.config.dir} config=${this.config.file}`)
+        const dirName = path.basename(path.resolve(__dirname, '..'))
+        if (dirName !== 'tabby-serial-mcp') {
+            this.log(`boot: warning — installed as "${dirName}"; Tabby derives the plugin name from the folder name, rename it to "tabby-serial-mcp"`)
+        }
         try {
             this.registry.sync()
             this.log(`boot: ${this.registry.targets.length} serial tab(s) attached`)
@@ -406,12 +410,20 @@ function getBridge () {
 }
 
 function createBridge (dependencies) {
-    if (!global.__tabbySerialMcpBridge) {
-        const bridge = new Bridge(dependencies)
-        global.__tabbySerialMcpBridge = bridge
-        bridge.boot()
+    const existing = global.__tabbySerialMcpBridge
+    if (existing) {
+        // Tabby derives a plugin's name from its folder name, so two folders that
+        // both contain this package load it twice: two settings pages, two
+        // providers, one shared bridge.
+        try {
+            existing.log('boot: a second copy of this plugin was loaded — delete the extra folder; only "tabby-serial-mcp" should exist under plugins/node_modules')
+        } catch { /* ignore */ }
+        return existing
     }
-    return global.__tabbySerialMcpBridge
+    const bridge = new Bridge(dependencies)
+    global.__tabbySerialMcpBridge = bridge
+    bridge.boot()
+    return bridge
 }
 
 module.exports = { Bridge, createBridge, getBridge, INSTRUCTIONS, delay }

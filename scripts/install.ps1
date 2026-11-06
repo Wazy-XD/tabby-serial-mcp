@@ -46,6 +46,21 @@ Remove-Item -LiteralPath $staging -Recurse -Force
 
 Write-Host "installed -> $target"
 
+# Tabby derives the plugin name from the folder name, so a second folder holding
+# this same package makes Tabby load it twice (two plugin entries, two settings
+# pages). Remove such leftovers.
+Get-ChildItem -LiteralPath $pluginsRoot -Directory | Where-Object { $_.Name -ne 'tabby-serial-mcp' } | ForEach-Object {
+    $otherManifest = Join-Path $_.FullName 'package.json'
+    if (Test-Path -LiteralPath $otherManifest) {
+        try {
+            if ((Get-Content -LiteralPath $otherManifest -Raw | ConvertFrom-Json).name -eq 'tabby-serial-mcp') {
+                Write-Host "removing duplicate copy: $($_.FullName)"
+                Remove-Item -LiteralPath $_.FullName -Recurse -Force
+            }
+        } catch { /* not our package */ }
+    }
+}
+
 if ($NoRestart) {
     Write-Host 'restart Tabby to load the plugin.'
     return
