@@ -63,11 +63,15 @@ grow a **Serial MCP** page (status, port, echo toggle, restart).
 Point any streamable-HTTP MCP client at `http://127.0.0.1:3002/mcp`.
 
 For DeepSeek Harness, `dsh-bundle/` is a configuration-only bundle that wires the official
-`@deepseek-ai/dsh-mcp-client` to that URL:
+`@deepseek-ai/dsh-mcp-client` to that URL. Install it straight from this repository:
 
-1. Download `dsh-tabby-serial.zip` from the release and extract it somewhere permanent.
-2. Install it as a bundle (`plugin_manager install_bundle <absolute path>` from a DSH session, or add
-   the row below to your profile's `cordis.patch.yml`):
+```
+plugin_manager install_bundle github:Wazy-XD/tabby-serial-mcp#path:/dsh-bundle
+```
+
+That resolves through git and pins the commit in the profile lockfile — no local path, no symlink. To move
+to a newer commit later, `remove_bundle dsh-tabby-serial` and install again. A release tarball
+(`dsh-tabby-serial.zip`) works too; or add the row by hand:
 
 ```yaml
 - insert:

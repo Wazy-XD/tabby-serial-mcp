@@ -62,11 +62,14 @@ curl -fsSL https://raw.githubusercontent.com/Wazy-XD/tabby-serial-mcp/main/scrip
 任何 streamable-HTTP 的 MCP 客户端都可以连 `http://127.0.0.1:3002/mcp`。
 
 用 DeepSeek Harness 的话，`dsh-bundle/` 是一个配置型 bundle，把官方 `@deepseek-ai/dsh-mcp-client`
-接到这个地址：
+接到这个地址。直接从仓库装：
 
-1. 从 release 下载 `dsh-tabby-serial.zip`，解压到一个长期保留的位置。
-2. 装成 bundle（在 DSH 会话里 `plugin_manager install_bundle <绝对路径>`，或者把下面这段加进 profile
-   的 `cordis.patch.yml`）：
+```
+plugin_manager install_bundle github:Wazy-XD/tabby-serial-mcp#path:/dsh-bundle
+```
+
+走 git 解析，会把具体 commit 钉进 profile 的锁文件——不是本地路径，也不是软链。以后要升级到新 commit，
+先 `remove_bundle dsh-tabby-serial` 再装一次。也可以用 release 里的 `dsh-tabby-serial.zip`，或者手写：
 
 ```yaml
 - insert:
